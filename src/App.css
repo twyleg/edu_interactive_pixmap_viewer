@@ -1,0 +1,323 @@
+body {
+  margin: 0;
+  background: #f9fbff;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 3rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  color: #1c2333;
+  background: linear-gradient(180deg, #f9fbff 0%, #eef2f8 100%);
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero__tagline {
+  margin: 0;
+  color: #4d5671;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.dropzone {
+  width: min(100%, 640px);
+  padding: 2.5rem 1.5rem;
+  border: 2px dashed #8aaef2;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.dropzone--active {
+  border-color: #3d68f5;
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(61, 104, 245, 0.25);
+}
+
+.dropzone__headline {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.dropzone__subtext {
+  color: #5c6788;
+  font-size: 0.95rem;
+}
+
+.file-picker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: #3d68f5;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(61, 104, 245, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.file-picker:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(61, 104, 245, 0.3);
+}
+
+.file-picker input {
+  display: none;
+}
+
+.error {
+  width: min(100%, 640px);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: #fdecea;
+  color: #c62828;
+  border: 1px solid #f7c6c5;
+  text-align: left;
+}
+
+.viewer {
+  width: min(100%, 900px);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 28px 50px rgba(20, 30, 60, 0.18);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: #3a4562;
+  font-size: 0.95rem;
+}
+
+.meta span {
+  background: #eef1ff;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+}
+
+.viewer__stage {
+  background: #f3f6ff;
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: 75vh;
+  box-sizing: border-box;
+  overflow: visible;
+  position: relative;
+  cursor: crosshair;
+}
+
+.viewer__stage--error {
+  cursor: default;
+  background: #f5f7fb;
+  border: 2px dashed rgba(205, 45, 76, 0.25);
+}
+
+.viewer__stage img,
+.viewer__stage canvas {
+  cursor: crosshair;
+}
+
+.viewer canvas,
+.viewer img {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 16px 36px rgba(27, 31, 59, 0.14);
+}
+
+.viewer img {
+  object-fit: contain;
+}
+
+.viewer canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: crisp-edges;
+}
+
+.picker-error {
+  font-size: 0.9rem;
+  color: #c62828;
+  align-self: flex-start;
+}
+
+.netpbm-text {
+  margin-top: 1.25rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #101831;
+  color: #e4e9ff;
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 24px 48px rgba(11, 17, 37, 0.42);
+  border: 1px solid rgba(77, 128, 255, 0.18);
+}
+
+.netpbm-text--invalid {
+  border: 1px solid rgba(255, 132, 154, 0.42);
+  box-shadow: 0 24px 48px rgba(44, 5, 16, 0.35);
+}
+
+.netpbm-text__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.netpbm-text__meta {
+  font-weight: 500;
+  color: rgba(228, 233, 255, 0.7);
+}
+
+.netpbm-text__editor {
+  min-height: 240px;
+  max-height: 360px;
+  width: 100%;
+  resize: vertical;
+  border-radius: 12px;
+  border: 1px solid rgba(82, 108, 215, 0.35);
+  background: rgba(12, 18, 38, 0.85);
+  color: #cfd6ff;
+  padding: 0.9rem 1rem;
+  font-family: 'Fira Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(87, 112, 212, 0.15);
+}
+
+.netpbm-text__editor:focus {
+  border-color: rgba(117, 145, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(74, 110, 255, 0.35);
+}
+
+.netpbm-text--invalid .netpbm-text__editor {
+  border-color: rgba(255, 132, 154, 0.65);
+  box-shadow: inset 0 0 0 1px rgba(255, 92, 120, 0.35);
+}
+
+.netpbm-text__hint,
+.netpbm-text__error {
+  font-size: 0.85rem;
+  color: rgba(228, 233, 255, 0.7);
+}
+
+.netpbm-text__error {
+  color: #ff98aa;
+  font-weight: 600;
+}
+
+.picker-tooltip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(18, 26, 52, 0.92);
+  color: #ffffff;
+  font-size: 0.8rem;
+  pointer-events: none;
+  transform: translate(-50%, -125%);
+  white-space: nowrap;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  z-index: 1000;
+}
+
+.picker-tooltip__swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.picker-tooltip__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.picker-tooltip__details span:first-child {
+  font-weight: 600;
+}
+
+.viewer__placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 130, 150, 0.35);
+  background: rgba(255, 245, 248, 0.8);
+  color: #b3263d;
+  text-align: center;
+}
+
+.viewer__placeholder-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.viewer__placeholder-message {
+  font-size: 0.9rem;
+  color: #c0485a;
+}
+
+.analysis-canvas {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .viewer {
+    padding: 1.25rem;
+  }
+}
